@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useFormStatus } from "react-dom";
+import { useFormStatus } from 'react-dom';
 
 const UpdateButton = () => {
   const { pending } = useFormStatus();
   return (
     <button
+      className="max-w-96 cursor-pointer rounded-md bg-lama p-2 text-white disabled:cursor-not-allowed disabled:bg-pink-200"
       disabled={pending}
-      className="bg-lama text-white p-2 rounded-md cursor-pointer disabled:bg-pink-200 disabled:cursor-not-allowed max-w-96"
     >
-      {pending ? "Updating..." : "Update"}
+      {pending ? 'Updating...' : 'Update'}
     </button>
   );
 };

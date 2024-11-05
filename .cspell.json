@@ -1,0 +1,13 @@
+{
+  "version": "0.2",
+  "language": "en,fa",
+  "useGitignore": true,
+  "import": ["@cspell/dict-fa-ir/cspell-ext.json"],
+  "ignorePaths": [
+    "**/*.svg",
+    "./supabase/migrations/*.json",
+    "./supabase/migrations/*.sql",
+    "./src/data-layer/supabase/models/Database.ts",
+    "**/pnpm-lock.yaml"
+  ]
+}

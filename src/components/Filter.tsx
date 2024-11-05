@@ -1,72 +1,49 @@
-"use client";
-
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
 const Filter = () => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
-
-  const handleFilterChange = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
-  ) => {
-    const { name, value } = e.target;
-    const params = new URLSearchParams(searchParams);
-    params.set(name, value);
-    replace(`${pathname}?${params.toString()}`);
-  };
-
   return (
     <div className="mt-12 flex justify-between">
-      <div className="flex gap-6 flex-wrap">
+      <div className="flex flex-wrap gap-6">
         <select
-          name="type"
+          className="rounded-2xl bg-[#EBEDED] px-4 py-2 text-xs font-medium"
           id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-          onChange={handleFilterChange}
+          name="type"
         >
           <option>Type</option>
           <option value="physical">Physical</option>
           <option value="digital">Digital</option>
         </select>
         <input
-          type="text"
+          className="w-24 rounded-2xl pl-2 text-xs ring-1 ring-gray-400"
           name="min"
           placeholder="min price"
-          className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
-          onChange={handleFilterChange}
         />
         <input
-          type="text"
+          className="w-24 rounded-2xl pl-2 text-xs ring-1 ring-gray-400"
           name="max"
           placeholder="max price"
-          className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
-          onChange={handleFilterChange}
+          type="text"
         />
         {/* TODO: Filter Categories */}
         <select
+          className="rounded-2xl bg-[#EBEDED] px-4 py-2 text-xs font-medium"
           name="cat"
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-          onChange={handleFilterChange}
         >
           <option>Category</option>
           <option value="">New Arrival</option>
           <option value="">Popular</option>
         </select>
         <select
-          name=""
+          className="rounded-2xl bg-[#EBEDED] px-4 py-2 text-xs font-medium"
           id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
+          name=""
         >
           <option>All Filters</option>
         </select>
       </div>
       <div className="">
         <select
-          name="sort"
+          className="rounded-2xl bg-white px-4 py-2 text-xs font-medium ring-1 ring-gray-400"
           id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
-          onChange={handleFilterChange}
+          name="sort"
         >
           <option>Sort By</option>
           <option value="asc price">Price (low to high)</option>
