@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import Menu from './Menu';
 import SearchBar from './SearchBar';
-// import NavIcons from "./NavIcons";
 
 const NavIcons = dynamic(() => import('./NavIcons'), { ssr: false });
 

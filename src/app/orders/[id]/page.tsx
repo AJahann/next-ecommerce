@@ -12,10 +12,7 @@ const OrderPage = () => {
           </div>
           <div className="">
             <span className="font-medium">Receiver Name: </span>
-            <span>
-              order.billingInfo?.contactDetails?.firstName
-              order.billingInfo?.contactDetails?.lastName
-            </span>
+            <span>firstName lastName</span>
           </div>
           <div className="">
             <span className="font-medium">Receiver Email: </span>

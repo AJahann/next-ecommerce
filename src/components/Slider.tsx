@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const slides = [
   {
@@ -34,14 +34,6 @@ const slides = [
 const Slider = () => {
   const [current, setCurrent] = useState(0);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  //   }, 3000);
-
-  //   return () => clearInterval(interval);
-  // }, []);
-
   return (
     <div className="h-[calc(100vh-80px)] overflow-hidden">
       <div
@@ -62,7 +54,10 @@ const Slider = () => {
                 {slide.title}
               </h1>
               <Link href={slide.url}>
-                <button className="rounded-md bg-black px-4 py-3 text-white ">
+                <button
+                  className="rounded-md bg-black px-4 py-3 text-white "
+                  type="button"
+                >
                   SHOP NOW
                 </button>
               </Link>
@@ -74,7 +69,7 @@ const Slider = () => {
                 alt=""
                 className="object-cover"
                 sizes="100%"
-                src={slide.img}
+                src={'/woman.png'}
               />
             </div>
           </div>
@@ -82,8 +77,12 @@ const Slider = () => {
       </div>
       <div className="absolute bottom-8 left-1/2 m-auto flex gap-4">
         {slides.map((slide, index) => (
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events
           <div
             key={slide.id}
+            onClick={() => {
+              setCurrent(index);
+            }}
             className={`flex size-3  cursor-pointer items-center justify-center rounded-full ring-1 ring-gray-600 ${
               current === index ? 'scale-150' : ''
             }`}

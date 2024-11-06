@@ -4,7 +4,7 @@
 const LoginPage = () => {
   return (
     <div className="flex h-[calc(100vh-80px)] items-center justify-center px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
-      <form className="flex flex-col gap-8">
+      <form className="flex w-4/5 flex-col gap-8 md:w-2/4 xl:w-1/3">
         <h1 className="text-2xl font-semibold">REGISTER</h1>
         <div className="flex flex-col gap-2">
           <label className="text-sm text-gray-700">Username</label>
@@ -15,49 +15,34 @@ const LoginPage = () => {
             type="text"
           />
         </div>
-        {/* {mode !== MODE.EMAIL_VERIFICATION ? (
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-700">E-mail</label>
-            <input
-              className="rounded-md p-4 ring-2 ring-gray-300"
-              name="email"
-              placeholder="john@gmail.com"
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-        ) : (
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-700">Verification Code</label>
-            <input
-              className="rounded-md p-4 ring-2 ring-gray-300"
-              name="emailCode"
-              placeholder="Code"
-              type="text"
-              onChange={(e) => setEmailCode(e.target.value)}
-            />
-          </div>
-        )}
-        {mode === MODE.LOGIN || mode === MODE.REGISTER ? (
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-700">Password</label>
-            <input
-              className="rounded-md p-4 ring-2 ring-gray-300"
-              name="password"
-              placeholder="Enter your password"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-        ) : null}
-        {mode === MODE.LOGIN && (
-          <div
-            className="cursor-pointer text-sm underline"
-            onClick={() => setMode(MODE.RESET_PASSWORD)}
-          >
-            Forgot Password?
-          </div>
-        )} */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm text-gray-700">E-mail</label>
+          <input
+            className="rounded-md p-4 ring-2 ring-gray-300"
+            name="email"
+            placeholder="john@gmail.com"
+            type="email"
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="text-sm text-gray-700">Verification Code</label>
+          <input
+            className="rounded-md p-4 ring-2 ring-gray-300"
+            name="emailCode"
+            placeholder="Code"
+            type="text"
+          />
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="text-sm text-gray-700">Password</label>
+          <input
+            className="rounded-md p-4 ring-2 ring-gray-300"
+            name="password"
+            placeholder="Enter your password"
+            type="password"
+          />
+        </div>
+        <div className="cursor-pointer text-sm underline">Forgot Password?</div>
         <button
           className="rounded-md bg-lama p-2 text-white disabled:cursor-not-allowed disabled:bg-pink-200"
           type="button"

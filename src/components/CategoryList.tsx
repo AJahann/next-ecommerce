@@ -12,7 +12,91 @@ const CategoryList = () => {
               alt=""
               className="object-cover"
               sizes="20vw"
-              src={'/cat.png'}
+              src={'/woman.png'}
+            />
+          </div>
+          <h1 className="mt-8 text-xl font-light tracking-wide">name</h1>
+        </Link>
+        <Link className="w-full shrink-0 sm:w-1/2 lg:w-1/4 xl:w-1/6" href="/">
+          <div className="relative h-96 w-full bg-slate-100">
+            <Image
+              fill
+              alt=""
+              className="object-cover"
+              sizes="20vw"
+              src={'/woman.png'}
+            />
+          </div>
+          <h1 className="mt-8 text-xl font-light tracking-wide">name</h1>
+        </Link>
+        <Link className="w-full shrink-0 sm:w-1/2 lg:w-1/4 xl:w-1/6" href="/">
+          <div className="relative h-96 w-full bg-slate-100">
+            <Image
+              fill
+              alt=""
+              className="object-cover"
+              sizes="20vw"
+              src={'/woman.png'}
+            />
+          </div>
+          <h1 className="mt-8 text-xl font-light tracking-wide">name</h1>
+        </Link>
+        <Link className="w-full shrink-0 sm:w-1/2 lg:w-1/4 xl:w-1/6" href="/">
+          <div className="relative h-96 w-full bg-slate-100">
+            <Image
+              fill
+              alt=""
+              className="object-cover"
+              sizes="20vw"
+              src={'/woman.png'}
+            />
+          </div>
+          <h1 className="mt-8 text-xl font-light tracking-wide">name</h1>
+        </Link>
+        <Link className="w-full shrink-0 sm:w-1/2 lg:w-1/4 xl:w-1/6" href="/">
+          <div className="relative h-96 w-full bg-slate-100">
+            <Image
+              fill
+              alt=""
+              className="object-cover"
+              sizes="20vw"
+              src={'/woman.png'}
+            />
+          </div>
+          <h1 className="mt-8 text-xl font-light tracking-wide">name</h1>
+        </Link>
+        <Link className="w-full shrink-0 sm:w-1/2 lg:w-1/4 xl:w-1/6" href="/">
+          <div className="relative h-96 w-full bg-slate-100">
+            <Image
+              fill
+              alt=""
+              className="object-cover"
+              sizes="20vw"
+              src={'/woman.png'}
+            />
+          </div>
+          <h1 className="mt-8 text-xl font-light tracking-wide">name</h1>
+        </Link>
+        <Link className="w-full shrink-0 sm:w-1/2 lg:w-1/4 xl:w-1/6" href="/">
+          <div className="relative h-96 w-full bg-slate-100">
+            <Image
+              fill
+              alt=""
+              className="object-cover"
+              sizes="20vw"
+              src={'/woman.png'}
+            />
+          </div>
+          <h1 className="mt-8 text-xl font-light tracking-wide">name</h1>
+        </Link>
+        <Link className="w-full shrink-0 sm:w-1/2 lg:w-1/4 xl:w-1/6" href="/">
+          <div className="relative h-96 w-full bg-slate-100">
+            <Image
+              fill
+              alt=""
+              className="object-cover"
+              sizes="20vw"
+              src={'/woman.png'}
             />
           </div>
           <h1 className="mt-8 text-xl font-light tracking-wide">name</h1>

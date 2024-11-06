@@ -1,4 +1,5 @@
 import Filter from '@/components/Filter';
+import ProductList from '@/components/ProductList';
 import Image from 'next/image';
 
 const ListPage = () => {
@@ -26,12 +27,7 @@ const ListPage = () => {
       <Filter />
       {/* PRODUCTS */}
       <h1 className="mt-12 text-xl font-semibold">For You!</h1>
-      {/* <ProductList
-          searchParams={searchParams}
-          categoryId={
-            cat.collection?._id || '00000000-000000-000000-000000000001'
-          }
-        /> */}
+      <ProductList />
     </div>
   );
 };

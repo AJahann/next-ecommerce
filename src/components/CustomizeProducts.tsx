@@ -44,10 +44,10 @@ const CustomizeProducts = () => {
         <div className="flex flex-col gap-4" key={option.name}>
           <h4 className="font-medium">Choose a {option.name}</h4>
           <ul className="flex items-center gap-3">
-            {option.choices?.map((choice) => {
+            {option.choices.map((choice) => {
               return option.name === 'Color' ? (
                 <li
-                  className="relative w-8 h-8 rounded-full ring-1 ring-gray-300"
+                  className="relative size-8 rounded-full ring-1 ring-gray-300"
                   key={choice.description}
                   onClick={clickHandler}
                   style={{
@@ -56,7 +56,7 @@ const CustomizeProducts = () => {
                   }}
                 >
                   {selected && (
-                    <div className="absolute left-1/2 top-1/2 w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2" />
+                    <div className="absolute left-1/2 top-1/2 size-10 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2" />
                   )}
                 </li>
               ) : (
