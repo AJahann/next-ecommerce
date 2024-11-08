@@ -1,0 +1,27 @@
+[
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a04" },
+    "username": "adminUser",
+    "email": "admin@example.com",
+    "password": "hashed_password_here",
+    "role": "super_admin"
+  },
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a05" },
+    "username": "sellerOne",
+    "email": "seller1@example.com",
+    "password": "hashed_password_here",
+    "role": "seller",
+    "storeName": "Jewelry Store",
+    "storeDescription": "Specialized in fine jewelry."
+  },
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a06" },
+    "username": "sellerTwo",
+    "email": "seller2@example.com",
+    "password": "hashed_password_here",
+    "role": "seller",
+    "storeName": "ElectroShop",
+    "storeDescription": "Best gadgets and electronics."
+  }
+]

@@ -14,7 +14,7 @@ const ProductList = async () => {
       {products.slice(0, 4).map((product) => (
         <Link
           className="flex w-full flex-col gap-4 sm:w-[45%] lg:w-[22%]"
-          href={`/${product.slug}`}
+          href={product.slug}
           key={product.id}
         >
           <div className="relative h-80 w-full">
@@ -23,14 +23,14 @@ const ProductList = async () => {
               alt=""
               className="easy absolute z-10 rounded-md object-cover transition-opacity duration-500 hover:opacity-0"
               sizes="25vw"
-              src={`/${product.media.mainMedia.image.url}`}
+              src={product.media.mainMedia.image.url}
             />
             <Image
               fill
               alt=""
               className="absolute rounded-md object-cover"
               sizes="25vw"
-              src={`/${product.media.items[0]?.image?.url}`}
+              src={product.media.items[0]?.image?.url}
             />
           </div>
           <div className="flex justify-between">

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
-import type { Document } from 'mongoose';
+import type { Document, Types } from 'mongoose';
 
-import mongoose, { Schema } from 'mongoose';
+import { model, models, Schema } from 'mongoose';
 
 export interface ProductDocument extends Document {
   slug: string;
@@ -12,32 +12,43 @@ export interface ProductDocument extends Document {
   price: number;
   additionalInfoSections: { title: string; description: string }[];
   createdAt: Date;
-  createdBy: string;
+  createdBy: Types.ObjectId;
   type: string;
-  category: string;
+  category: Types.ObjectId;
+  reviews: Types.ObjectId[];
 }
 
 const ProductSchema: Schema = new Schema({
   slug: { type: String, required: true },
   media: {
-    mainMedia: { image: { url: { type: String, required: true } } },
-    items: [{ image: { url: { type: String } } }],
+    mainMedia: {
+      image: {
+        url: { type: String, required: true },
+      },
+    },
+    items: [
+      {
+        image: {
+          url: { type: String, required: false },
+        },
+      },
+    ],
   },
   price: { type: Number, required: true },
   additionalInfoSections: [
     {
-      title: { type: String, required: true },
-      description: { type: String, required: true },
+      title: { type: String },
+      description: { type: String },
     },
   ],
   createdAt: { type: Date, default: Date.now },
-  createdBy: { type: String, required: true },
+  createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   type: { type: String, required: true },
-  category: { type: String, required: true },
+  category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 });
 
 const Product =
-  mongoose.models.Product ||
-  mongoose.model<ProductDocument>('Product', ProductSchema);
+  models.Product || model<ProductDocument>('Product', ProductSchema);
 
 export default Product;

@@ -1,0 +1,56 @@
+[
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a09" },
+    "slug": "gold-ring",
+    "media": {
+      "mainMedia": { "image": { "url": "/product1.jpg" } },
+      "items": [
+        { "image": { "url": "/product1_side.jpg" } },
+        { "image": { "url": "/product1_top.jpg" } }
+      ]
+    },
+    "price": 249.99,
+    "additionalInfoSections": [
+      {
+        "title": "Short Description",
+        "description": "A beautifully crafted gold ring."
+      },
+      {
+        "title": "Details",
+        "description": "Made from 18K gold with polished finish."
+      }
+    ],
+    "createdAt": { "$date": "2023-01-01T00:00:00Z" },
+    "createdBy": { "$oid": "64c8b5fbe3b93a3d1c7f5a05" },
+    "type": "jewelry",
+    "category": { "$oid": "64c8b5fbe3b93a3d1c7f5a01" },
+    "reviews": []
+  },
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a10" },
+    "slug": "smartphone",
+    "media": {
+      "mainMedia": { "image": { "url": "/product2.jpg" } },
+      "items": [
+        { "image": { "url": "/product2_side.jpg" } },
+        { "image": { "url": "/product2_top.jpg" } }
+      ]
+    },
+    "price": 599.99,
+    "additionalInfoSections": [
+      {
+        "title": "Short Description",
+        "description": "A latest model smartphone."
+      },
+      {
+        "title": "Details",
+        "description": "128GB storage, 8GB RAM, 5G enabled."
+      }
+    ],
+    "createdAt": { "$date": "2023-02-01T00:00:00Z" },
+    "createdBy": { "$oid": "64c8b5fbe3b93a3d1c7f5a06" },
+    "type": "electronics",
+    "category": { "$oid": "64c8b5fbe3b93a3d1c7f5a02" },
+    "reviews": []
+  }
+]

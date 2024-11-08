@@ -1,0 +1,37 @@
+[
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a01" },
+    "name": "Jewelry",
+    "description": "Fine jewelry items including rings, necklaces, and bracelets.",
+    "image": { "url": "/images/categories/jewelry.jpg" },
+    "products": []
+  },
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a02" },
+    "name": "Electronics",
+    "description": "Latest gadgets and electronic devices.",
+    "image": { "url": "/images/categories/electronics.jpg" },
+    "products": []
+  },
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a03" },
+    "name": "Fashion",
+    "description": "Trending fashion items and accessories.",
+    "image": { "url": "/images/categories/fashion.jpg" },
+    "products": []
+  },
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a04" },
+    "name": "Home Appliances",
+    "description": "Household appliances for everyday use.",
+    "image": { "url": "/images/categories/home_appliances.jpg" },
+    "products": []
+  },
+  {
+    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a05" },
+    "name": "Books",
+    "description": "A variety of books across different genres.",
+    "image": { "url": "/images/categories/books.jpg" },
+    "products": []
+  }
+]

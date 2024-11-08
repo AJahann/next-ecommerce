@@ -1,15 +1,17 @@
-/* eslint-disable no-return-await */
 import connectToDB from '@/database/db';
-
-import Product from '../models/Product';
+import Product from '@/models/Product';
 
 class ProductRepository {
   async createProduct(data: any) {
+    await connectToDB();
+
     const product = new Product(data);
-    return await product.save();
+    return product.save();
   }
 
   async deleteProduct(id: string) {
+    await connectToDB();
+
     return Product.findByIdAndDelete(id);
   }
 
@@ -31,10 +33,14 @@ class ProductRepository {
   }
 
   async getProductById(id: string) {
+    await connectToDB();
+
     return Product.findById(id);
   }
 
   async updateProduct(id: string, data: any) {
+    await connectToDB();
+
     return Product.findByIdAndUpdate(id, data, { new: true });
   }
 }
