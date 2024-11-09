@@ -8,7 +8,7 @@ export interface UserDocument extends Document {
   email: string;
   password: string;
   role: 'seller' | 'super_admin' | 'user';
-  createdProducts: Types.ObjectId[];
+  createdProducts?: Types.ObjectId[];
   storeName?: string;
   storeDescription?: string;
 }
@@ -19,7 +19,7 @@ const UserSchema = new Schema<UserDocument>({
   password: { type: String, required: false },
   role: {
     type: String,
-    enum: ['user', 'admin', 'super_admin', 'seller'],
+    enum: ['user', 'super_admin', 'seller'],
     default: 'user',
   },
   createdProducts: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
