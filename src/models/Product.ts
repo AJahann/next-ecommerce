@@ -12,10 +12,10 @@ export interface ProductDocument extends Document {
   price: number;
   additionalInfoSections: { title: string; description: string }[];
   createdAt: Date;
-  createdBy: Types.ObjectId;
+  createdBy?: Types.ObjectId;
   type: string;
-  category: Types.ObjectId;
-  reviews: Types.ObjectId[];
+  category?: Types.ObjectId;
+  reviews?: Types.ObjectId[];
 }
 
 const ProductSchema: Schema = new Schema({
@@ -42,9 +42,9 @@ const ProductSchema: Schema = new Schema({
     },
   ],
   createdAt: { type: Date, default: Date.now },
-  createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   type: { type: String, required: true },
-  category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
+  category: { type: Schema.Types.ObjectId, ref: 'Category' },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
 });
 

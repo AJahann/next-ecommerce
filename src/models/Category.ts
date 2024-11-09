@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import type { Document, Types } from 'mongoose';
 
 import { model, models, Schema } from 'mongoose';
+
+import Product from './Product';
 
 export interface CategoryDocument extends Document {
   name: string;

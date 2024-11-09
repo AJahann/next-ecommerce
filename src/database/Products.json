@@ -1,56 +1,167 @@
 [
   {
-    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a09" },
-    "slug": "gold-ring",
+    "slug": "smartphone-1",
     "media": {
-      "mainMedia": { "image": { "url": "/product1.jpg" } },
-      "items": [
-        { "image": { "url": "/product1_side.jpg" } },
-        { "image": { "url": "/product1_top.jpg" } }
-      ]
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
+      },
+      "items": []
     },
-    "price": 249.99,
+    "price": 500,
     "additionalInfoSections": [
       {
-        "title": "Short Description",
-        "description": "A beautifully crafted gold ring."
-      },
-      {
-        "title": "Details",
-        "description": "Made from 18K gold with polished finish."
+        "title": "Features",
+        "description": "High-quality camera, fast processor"
       }
     ],
-    "createdAt": { "$date": "2023-01-01T00:00:00Z" },
-    "createdBy": { "$oid": "64c8b5fbe3b93a3d1c7f5a05" },
-    "type": "jewelry",
-    "category": { "$oid": "64c8b5fbe3b93a3d1c7f5a01" },
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa45",
+    "type": "Electronics",
+    "category": "648dbe4e8f1f2aeb6400fa44",
     "reviews": []
   },
   {
-    "_id": { "$oid": "64c8b5fbe3b93a3d1c7f5a10" },
-    "slug": "smartphone",
+    "slug": "smartwatch-1",
     "media": {
-      "mainMedia": { "image": { "url": "/product2.jpg" } },
-      "items": [
-        { "image": { "url": "/product2_side.jpg" } },
-        { "image": { "url": "/product2_top.jpg" } }
-      ]
-    },
-    "price": 599.99,
-    "additionalInfoSections": [
-      {
-        "title": "Short Description",
-        "description": "A latest model smartphone."
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
       },
-      {
-        "title": "Details",
-        "description": "128GB storage, 8GB RAM, 5G enabled."
-      }
+      "items": []
+    },
+    "price": 250,
+    "additionalInfoSections": [
+      { "title": "Features", "description": "Heart rate monitor, GPS" }
     ],
-    "createdAt": { "$date": "2023-02-01T00:00:00Z" },
-    "createdBy": { "$oid": "64c8b5fbe3b93a3d1c7f5a06" },
-    "type": "electronics",
-    "category": { "$oid": "64c8b5fbe3b93a3d1c7f5a02" },
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa46",
+    "type": "Electronics",
+    "category": "648dbe4e8f1f2aeb6400fa44",
+    "reviews": []
+  },
+  {
+    "slug": "novel-1",
+    "media": {
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
+      },
+      "items": []
+    },
+    "price": 15,
+    "additionalInfoSections": [
+      { "title": "Genre", "description": "Fiction, Mystery" }
+    ],
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa47",
+    "type": "Books",
+    "category": "648dbe4e8f1f2aeb6400fa43",
+    "reviews": []
+  },
+  {
+    "slug": "tshirt-1",
+    "media": {
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
+      },
+      "items": []
+    },
+    "price": 20,
+    "additionalInfoSections": [
+      { "title": "Material", "description": "100% Cotton" }
+    ],
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa48",
+    "type": "Clothing",
+    "category": "648dbe4e8f1f2aeb6400fa42",
+    "reviews": []
+  },
+  {
+    "slug": "novel-2",
+    "media": {
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
+      },
+      "items": []
+    },
+    "price": 18,
+    "additionalInfoSections": [
+      { "title": "Genre", "description": "Science Fiction" }
+    ],
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa49",
+    "type": "Books",
+    "category": "648dbe4e8f1f2aeb6400fa43",
+    "reviews": []
+  },
+  {
+    "slug": "refrigerator-1",
+    "media": {
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
+      },
+      "items": []
+    },
+    "price": 800,
+    "additionalInfoSections": [
+      { "title": "Features", "description": "Energy efficient, large capacity" }
+    ],
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa50",
+    "type": "Home Appliances",
+    "category": "648dbe4e8f1f2aeb6400fa41",
+    "reviews": []
+  },
+  {
+    "slug": "shoes-1",
+    "media": {
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
+      },
+      "items": []
+    },
+    "price": 60,
+    "additionalInfoSections": [
+      { "title": "Size", "description": "Available in various sizes" }
+    ],
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa51",
+    "type": "Sports",
+    "category": "648dbe4e8f1f2aeb6400fa40",
+    "reviews": []
+  },
+  {
+    "slug": "microwave-1",
+    "media": {
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
+      },
+      "items": []
+    },
+    "price": 120,
+    "additionalInfoSections": [
+      { "title": "Features", "description": "Quick heating, multiple modes" }
+    ],
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa52",
+    "type": "Home Appliances",
+    "category": "648dbe4e8f1f2aeb6400fa41",
+    "reviews": []
+  },
+  {
+    "slug": "tennis-racket-1",
+    "media": {
+      "mainMedia": {
+        "image": { "url": "/product2.jpg" }
+      },
+      "items": []
+    },
+    "price": 75,
+    "additionalInfoSections": [
+      { "title": "Material", "description": "Graphite" }
+    ],
+    "createdAt": "2024-11-09T00:00:00Z",
+    "createdBy": "648dbf4f8f1f2aeb6400fa53",
+    "type": "Sports",
+    "category": "648dbe4e8f1f2aeb6400fa40",
     "reviews": []
   }
 ]

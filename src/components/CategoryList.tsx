@@ -7,7 +7,10 @@ import Link from 'next/link';
 const CategoryList = async () => {
   const categories: CategoryDocument[] =
     await CategoryRepository.getAllCategories();
-  console.log(categories);
+
+  const categoryWithProdcuts = await CategoryRepository.getCategoryById(
+    '672f568f60bd7dee01b61804',
+  );
 
   return (
     <div className="scrollbar-hide overflow-x-scroll px-4">

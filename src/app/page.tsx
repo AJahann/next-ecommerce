@@ -3,8 +3,28 @@
 import CategoryList from '@/components/CategoryList';
 import ProductList from '@/components/ProductList';
 import Slider from '@/components/Slider';
+import CategoryRepository from '@/repositories/CategoryRepository';
+import ProductRepository from '@/repositories/ProductRepository';
 
-const HomePage = () => {
+const HomePage = async () => {
+  const newProduct = await CategoryRepository.createProductInCategory(
+    {
+      slug: 'test2',
+      media: {
+        mainMedia: {
+          image: { url: '/product.jpg' },
+        },
+        items: [],
+      },
+      price: 99.99,
+      additionalInfoSections: [
+        { title: 'Size', description: 'Available in various sizes' },
+      ],
+      createdAt: new Date(),
+      type: 'Sports',
+    },
+    '672f568f60bd7dee01b61804',
+  );
   return (
     <div className="">
       <Slider />
