@@ -1,8 +1,10 @@
+import type { UserBase } from '@/models/User';
+
 import connectToDB from '@/database/db';
 import User from '@/models/User';
 
 class UserRepository {
-  async createUser(data: any) {
+  async createUser(data: UserBase) {
     await connectToDB();
     const user = new User(data);
     return user.save();
@@ -16,6 +18,12 @@ class UserRepository {
   async getUserById(id: string) {
     await connectToDB();
     return User.findById(id).populate('products');
+  }
+
+  async isFirstUser() {
+    await connectToDB();
+    const existUser = await User.find();
+    return existUser[0];
   }
 }
 
