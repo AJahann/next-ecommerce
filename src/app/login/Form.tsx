@@ -1,10 +1,11 @@
+import { redirect } from 'next/navigation';
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useFormState } from 'react-dom';
 
-import action from './action';
 import Button from './Button';
+import { register } from './registerAction';
 
 interface Props {
   mode: 'LOGIN' | 'REGISTER';
@@ -13,21 +14,19 @@ interface Props {
 
 const Form = ({ mode, changeMode }: Props) => {
   const ref = useRef<HTMLFormElement>(null);
-  const [state, formAction] = useFormState(action, {
-    error: '',
-    message: null,
-  });
+  const [state, formAction] = useFormState(register, undefined);
+
+  useEffect(() => {
+    if (state?.success) {
+      return redirect('/');
+    }
+  }, [state]);
 
   return (
     <form
+      action={formAction}
       className="flex w-4/5 flex-col gap-8 md:w-2/4 xl:w-1/3"
       ref={ref}
-      action={(formData) => {
-        formAction(formData);
-        if (state.message === 'success') {
-          ref.current?.reset();
-        }
-      }}
     >
       <h1 className="text-2xl font-semibold">
         {mode === 'LOGIN' ? 'Login' : 'Register'}
@@ -44,6 +43,9 @@ const Form = ({ mode, changeMode }: Props) => {
           placeholder="Enter your username"
           type="text"
         />
+        {state?.error?.username && (
+          <div className="text-red-600">{state.error.username[0]}</div>
+        )}
       </div>
 
       {mode === 'REGISTER' && (
@@ -58,6 +60,9 @@ const Form = ({ mode, changeMode }: Props) => {
             placeholder="Your email..."
             type="email"
           />
+          {state?.error?.email && (
+            <div className="text-red-600">{state.error.email[0]}</div>
+          )}
         </div>
       )}
 
@@ -72,10 +77,15 @@ const Form = ({ mode, changeMode }: Props) => {
           placeholder="Enter your password"
           type="password"
         />
+        {state?.error?.password && (
+          <div className="text-red-600">{state.error.password[0]}</div>
+        )}
       </div>
 
+      <input name="mode" type="hidden" value={mode} />
+
       <Button>{mode === 'LOGIN' ? 'Login' : 'Register'}</Button>
-      {state.error && <div className="text-red-600">{state.error}</div>}
+      {/* {state.error && <div className="text-red-600">{state.error}</div>} */}
 
       <div
         className="cursor-pointer text-sm underline"

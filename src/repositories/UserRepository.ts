@@ -2,6 +2,7 @@ import type { UserBase } from '@/models/User';
 
 import connectToDB from '@/database/db';
 import User from '@/models/User';
+import bcrypt from 'bcrypt';
 
 class UserRepository {
   async createUser(data: UserBase) {
@@ -15,6 +16,21 @@ class UserRepository {
     return User.findByIdAndDelete(id);
   }
 
+  async getUser(username: string, password: string) {
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return null;
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return null;
+    }
+
+    return user;
+  }
+
   async getUserById(id: string) {
     await connectToDB();
     return User.findById(id).populate('products');
@@ -22,8 +38,9 @@ class UserRepository {
 
   async isFirstUser() {
     await connectToDB();
-    const existUser = await User.find();
-    return existUser[0];
+    const users = await User.find();
+    const result = Boolean(!users[0]);
+    return result;
   }
 }
 
