@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 const Reviews = async () => {
   // return reviews.data.map((review: any) => (
   //   <div className="flex flex-col gap-4" key={review.id}>

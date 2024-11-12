@@ -23,7 +23,7 @@ const images = [
 ];
 
 const ProductImages = () => {
-  const [index, setIndex] = useState(0);
+  const [index] = useState(0);
 
   return (
     <div className="">
@@ -37,7 +37,7 @@ const ProductImages = () => {
         />
       </div>
       <div className="mt-8 flex justify-between gap-4">
-        {images.map((item: any, i: number) => (
+        {images.map((item: any) => (
           <div
             className="relative mt-8 h-32 w-1/4 cursor-pointer gap-4"
             key={item._id}

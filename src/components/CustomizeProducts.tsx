@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import { useState } from 'react';
@@ -44,35 +45,36 @@ const CustomizeProducts = () => {
         <div className="flex flex-col gap-4" key={option.name}>
           <h4 className="font-medium">Choose a {option.name}</h4>
           <ul className="flex items-center gap-3">
-            {option.choices.map((choice) => {
-              return option.name === 'Color' ? (
-                <li
-                  className="relative size-8 rounded-full ring-1 ring-gray-300"
-                  key={choice.description}
-                  onClick={clickHandler}
-                  style={{
-                    backgroundColor: choice.value,
-                    cursor: 'pointer',
-                  }}
-                >
-                  {selected && (
-                    <div className="absolute left-1/2 top-1/2 size-10 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2" />
-                  )}
-                </li>
-              ) : (
-                <li
-                  className="rounded-md px-4 py-1 text-sm ring-1 ring-gray-300"
-                  key={choice.description}
-                  onClick={clickHandler}
-                  style={{
-                    cursor: 'pointer',
-                    backgroundColor: selected ? '#f35c7a' : 'white',
-                    color: selected ? 'white' : '#f35c7a',
-                  }}
-                >
-                  {choice.description}
-                </li>
-              );
+            {option.choices.map((_) => {
+              return <div key={_.description}></div>;
+              // return option.name === 'Color' ? (
+              //   <li
+              //     className="relative size-8 rounded-full ring-1 ring-gray-300"
+              //     key={choice.description}
+              //     onClick={clickHandler}
+              //     style={{
+              //       backgroundColor: choice.value,
+              //       cursor: 'pointer',
+              //     }}
+              //   >
+              //     {selected && (
+              //       <div className="absolute left-1/2 top-1/2 size-10 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2" />
+              //     )}
+              //   </li>
+              // ) : (
+              //   <li
+              //     className="rounded-md px-4 py-1 text-sm ring-1 ring-gray-300"
+              //     key={choice.description}
+              //     onClick={clickHandler}
+              //     style={{
+              //       cursor: 'pointer',
+              //       backgroundColor: selected ? '#f35c7a' : 'white',
+              //       color: selected ? 'white' : '#f35c7a',
+              //     }}
+              //   >
+              //     {choice.description}
+              //   </li>
+              // );
             })}
           </ul>
         </div>

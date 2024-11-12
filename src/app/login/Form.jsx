@@ -6,22 +6,7 @@ import { useFormState } from 'react-dom';
 import Button from './Button';
 import { login, register } from './formActions';
 
-interface Props {
-  mode: 'LOGIN' | 'REGISTER';
-  changeMode: () => void;
-}
-
-const InputField = ({
-  label,
-  id,
-  type,
-  error,
-}: {
-  label: string;
-  id: string;
-  type: string;
-  error?: string;
-}) => (
+const InputField = ({ label, id, type, error }) => (
   <div className="flex flex-col gap-2">
     <label className="text-sm text-gray-700" htmlFor={id}>
       {label}
@@ -38,8 +23,7 @@ const InputField = ({
 );
 
 // eslint-disable-next-line complexity
-const Form = ({ mode, changeMode }: Props) => {
-  const ref = useRef<HTMLFormElement>(null);
+const Form = ({ mode = 'REGISTER', changeMode }) => {
   const isRegisterMode = Boolean(mode === 'REGISTER');
   const [state, formAction] = useFormState(
     isRegisterMode ? register : login,
@@ -51,7 +35,6 @@ const Form = ({ mode, changeMode }: Props) => {
     <form
       action={formAction}
       className="flex w-4/5 flex-col gap-8 md:w-2/4 xl:w-1/3"
-      ref={ref}
     >
       <h1 className="text-2xl font-semibold">
         {mode === 'LOGIN' ? 'Login' : 'Register'}

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <div className="xl:32 mt-24 bg-gray-100 px-4 py-24 text-sm md:px-8 lg:px-16 2xl:px-64">
+    <div className="mt-24 bg-gray-100 px-4 py-24 text-sm md:px-8 lg:px-16 2xl:px-64">
       {/* TOP */}
       <div className="flex flex-col justify-between gap-24 md:flex-row">
         {/* LEFT */}
@@ -71,7 +71,9 @@ const Footer = () => {
               placeholder="Email address"
               type="text"
             />
-            <button className="w-1/4 bg-lama text-white">JOIN</button>
+            <button className="w-1/4 bg-lama text-white" type="button">
+              JOIN
+            </button>
           </div>
           <span className="font-semibold">Secure Payments</span>
           <div className="flex justify-between">

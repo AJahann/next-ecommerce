@@ -8,6 +8,7 @@ const UpdateButton = () => {
     <button
       className="max-w-96 cursor-pointer rounded-md bg-lama p-2 text-white disabled:cursor-not-allowed disabled:bg-pink-200"
       disabled={pending}
+      type="submit"
     >
       {pending ? 'Updating...' : 'Update'}
     </button>
