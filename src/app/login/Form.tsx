@@ -1,27 +1,52 @@
-import { redirect } from 'next/navigation';
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useFormState } from 'react-dom';
 
 import Button from './Button';
-import { register } from './registerAction';
+import { login, register } from './formActions';
 
 interface Props {
   mode: 'LOGIN' | 'REGISTER';
   changeMode: () => void;
 }
 
+const InputField = ({
+  label,
+  id,
+  type,
+  error,
+}: {
+  label: string;
+  id: string;
+  type: string;
+  error?: string;
+}) => (
+  <div className="flex flex-col gap-2">
+    <label className="text-sm text-gray-700" htmlFor={id}>
+      {label}
+    </label>
+    <input
+      className="rounded-md p-4 ring-2 ring-gray-300"
+      id={id}
+      name={id}
+      placeholder={`Enter your ${label.toLowerCase()}`}
+      type={type}
+    />
+    {error && <div className="text-red-600">{error}</div>}
+  </div>
+);
+
+// eslint-disable-next-line complexity
 const Form = ({ mode, changeMode }: Props) => {
   const ref = useRef<HTMLFormElement>(null);
-  const [state, formAction] = useFormState(register, undefined);
+  const isRegisterMode = Boolean(mode === 'REGISTER');
+  const [state, formAction] = useFormState(
+    isRegisterMode ? register : login,
+    undefined,
+  );
 
-  useEffect(() => {
-    if (state?.success) {
-      return redirect('/');
-    }
-  }, [state]);
-
+  console.log(state);
   return (
     <form
       action={formAction}
@@ -33,59 +58,40 @@ const Form = ({ mode, changeMode }: Props) => {
       </h1>
 
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-gray-700" htmlFor="username">
-          Username
-        </label>
-        <input
-          className="rounded-md p-4 ring-2 ring-gray-300"
+        <InputField
+          error={state?.error?.username}
           id="username"
-          name="username"
-          placeholder="Enter your username"
+          label="Username"
           type="text"
         />
-        {state?.error?.username && (
-          <div className="text-red-600">{state.error.username[0]}</div>
-        )}
       </div>
 
       {mode === 'REGISTER' && (
         <div className="flex flex-col gap-2">
-          <label className="text-sm text-gray-700" htmlFor="email">
-            E-mail
-          </label>
-          <input
-            className="rounded-md p-4 ring-2 ring-gray-300"
+          <InputField
+            error={state?.error?.email}
             id="email"
-            name="email"
-            placeholder="Your email..."
+            label="E-mail"
             type="email"
           />
-          {state?.error?.email && (
-            <div className="text-red-600">{state.error.email[0]}</div>
-          )}
         </div>
       )}
 
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-gray-700" htmlFor="password">
-          Password
-        </label>
-        <input
-          className="rounded-md p-4 ring-2 ring-gray-300"
+        <InputField
+          error={state?.error?.password}
           id="password"
-          name="password"
-          placeholder="Enter your password"
+          label="Password"
           type="password"
         />
-        {state?.error?.password && (
-          <div className="text-red-600">{state.error.password[0]}</div>
-        )}
       </div>
 
       <input name="mode" type="hidden" value={mode} />
 
       <Button>{mode === 'LOGIN' ? 'Login' : 'Register'}</Button>
-      {/* {state.error && <div className="text-red-600">{state.error}</div>} */}
+      {state?.error?.global && (
+        <div className="text-red-600">{state.error.global}</div>
+      )}
 
       <div
         className="cursor-pointer text-sm underline"

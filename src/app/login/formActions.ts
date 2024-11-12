@@ -4,6 +4,7 @@ import connectToDB from '@/database/db';
 import UserRepository from '@/repositories/UserRepository';
 import { createSession } from '@/utils/session';
 import bcrypt from 'bcrypt';
+import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
 const registerSchema = z.object({
@@ -43,9 +44,58 @@ export const register = async (prevState: any, formData: FormData) => {
     });
 
     await createSession(newUser._id);
-
-    return { success: true };
   } catch (error) {
     console.log('we have error in register user => ', error);
+    return {
+      error: {
+        global: ['Unexpected register error'],
+      },
+    };
   }
+
+  redirect('/');
+  return { success: true };
+};
+
+const loginSchema = z.object({
+  username: z
+    .string()
+    .min(4, { message: 'Username must be at least 4 characters' })
+    .trim()
+    .toLowerCase(),
+  password: z.string().min(1, { message: 'Password is required' }).trim(),
+});
+
+export const login = async (prevState: any, formData: FormData) => {
+  const resultSchema = loginSchema.safeParse(Object.fromEntries(formData));
+
+  if (!resultSchema.success) {
+    return {
+      error: resultSchema.error.flatten().fieldErrors,
+    };
+  }
+
+  const { username, password } = resultSchema.data;
+
+  try {
+    await connectToDB();
+    const user = await UserRepository.getUser(username, password);
+    console.log('login user => ', user);
+    if (!user) {
+      return {
+        error: {
+          global: ['Invalid username or password'],
+        },
+      };
+    }
+    await createSession(user._id);
+  } catch (error) {
+    console.log('we have error in login user => ', error);
+    return {
+      error: { global: ['Unexpected login error'] },
+    };
+  }
+
+  redirect('/');
+  return { success: true };
 };
