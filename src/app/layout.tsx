@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 
-import Footer from '@/components/Footer';
-
 import './globals.css';
 
+import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import UserHydration from '@/components/UserHydration';
+import { AuthProvider } from '@/context/useAuth';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -22,9 +23,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        <Footer />
+        <AuthProvider
+          initialAuthState={{
+            loggedIn: false,
+            user: null,
+          }}
+        >
+          <UserHydration />
+          <Navbar />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

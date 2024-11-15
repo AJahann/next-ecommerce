@@ -1,10 +1,13 @@
+'use client';
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useRef } from 'react';
 import { useFormState } from 'react-dom';
 
 import Button from './Button';
 import { login, register } from './formActions';
+import { useAuth } from '@/context/useAuth';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const InputField = ({ label, id, type, error }) => (
   <div className="flex flex-col gap-2">
@@ -25,12 +28,21 @@ const InputField = ({ label, id, type, error }) => (
 // eslint-disable-next-line complexity
 const Form = ({ mode = 'REGISTER', changeMode }) => {
   const isRegisterMode = Boolean(mode === 'REGISTER');
+  const { setAuthState } = useAuth();
+  const router = useRouter();
   const [state, formAction] = useFormState(
     isRegisterMode ? register : login,
     undefined,
   );
 
-  console.log(state);
+  if (state?.success) {
+    setAuthState({ loggedIn: state.success, user: state.user });
+
+    toast.success('Everything ok keep going');
+
+    router.push('/');
+  }
+
   return (
     <form
       action={formAction}

@@ -31,9 +31,10 @@ class UserRepository {
     return user;
   }
 
-  async getUserById(id: string) {
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  async getUserById(id: string | unknown) {
     await connectToDB();
-    return User.findById(id).populate('products');
+    return User.findById(id);
   }
 
   async isFirstUser() {

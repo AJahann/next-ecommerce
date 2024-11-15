@@ -4,7 +4,6 @@ import connectToDB from '@/database/db';
 import UserRepository from '@/repositories/UserRepository';
 import { createSession } from '@/utils/session';
 import bcrypt from 'bcrypt';
-import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
 const registerSchema = z.object({
@@ -44,6 +43,14 @@ export const register = async (prevState: any, formData: FormData) => {
     });
 
     await createSession(newUser._id);
+
+    return {
+      success: true,
+      user: {
+        username: newUser?.username,
+        email: newUser?.email,
+      },
+    };
   } catch (error) {
     console.log('we have error in register user => ', error);
     return {
@@ -52,9 +59,6 @@ export const register = async (prevState: any, formData: FormData) => {
       },
     };
   }
-
-  redirect('/');
-  return { success: true };
 };
 
 const loginSchema = z.object({
@@ -89,13 +93,18 @@ export const login = async (prevState: any, formData: FormData) => {
       };
     }
     await createSession(user._id);
+
+    return {
+      success: true,
+      user: {
+        username: user?.username,
+        email: user?.email,
+      },
+    };
   } catch (error) {
     console.log('we have error in login user => ', error);
     return {
       error: { global: ['Unexpected login error'] },
     };
   }
-
-  redirect('/');
-  return { success: true };
 };

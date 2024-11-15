@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Form from './Form';
 
 const LoginPage = () => {
-  const [mode, setMode] = useState<'LOGIN' | 'REGISTER'>('REGISTER');
+  const [mode, setMode] = useState<'LOGIN' | 'REGISTER'>('LOGIN');
   const switchModeHandler = () => {
     setMode((currentMode) => (currentMode === 'LOGIN' ? 'REGISTER' : 'LOGIN'));
   };
