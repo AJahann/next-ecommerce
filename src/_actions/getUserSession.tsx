@@ -15,7 +15,15 @@ export async function getUserSession() {
     if (!sessionInfo?.userId) return null;
 
     const user = await UserRepository.getUserById(sessionInfo.userId);
-    return user ? { username: user.username, email: user.email } : null;
+    return user
+      ? {
+          username: user.username,
+          email: user.email,
+          firstname: user.firstname,
+          surname: user.surname,
+          orders: user.orders,
+        }
+      : null;
   } catch {
     return null;
   }

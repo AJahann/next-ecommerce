@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 import type { UserBase } from '@/models/User';
 
 import connectToDB from '@/database/db';
@@ -31,7 +32,6 @@ class UserRepository {
     return user;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   async getUserById(id: string | unknown) {
     await connectToDB();
     return User.findById(id);
@@ -42,6 +42,19 @@ class UserRepository {
     const users = await User.find();
     const result = Boolean(!users[0]);
     return result;
+  }
+
+  async updateUserInfoById(id: string | unknown, data: any) {
+    await connectToDB();
+
+    const user = await User.findById(id);
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    Object.assign(user, data);
+
+    return user.save();
   }
 }
 
