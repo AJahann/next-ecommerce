@@ -11,7 +11,7 @@ const ProductList = async () => {
 
   return (
     <div className="mt-12 flex flex-wrap justify-between gap-x-8 gap-y-16">
-      {products.slice(0, 4).map((product) => (
+      {products.map((product) => (
         <Link
           className="flex w-full flex-col gap-4 sm:w-[45%] lg:w-[22%]"
           href={product.slug}

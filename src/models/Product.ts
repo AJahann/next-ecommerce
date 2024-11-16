@@ -16,10 +16,15 @@ export interface ProductDocument extends Document {
   type: string;
   category?: Types.ObjectId;
   reviews?: Types.ObjectId[];
+  isFeatured: boolean;
+  isNew: boolean;
+  discount?: number;
+  stock: number;
+  tags?: string[];
 }
 
 const ProductSchema: Schema = new Schema({
-  slug: { type: String, required: true },
+  slug: { type: String, required: true, unique: true },
   media: {
     mainMedia: {
       image: {
@@ -46,6 +51,11 @@ const ProductSchema: Schema = new Schema({
   type: { type: String, required: true },
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+  isFeatured: { type: Boolean, default: false },
+  isNew: { type: Boolean, default: false },
+  discount: { type: Number, default: 0 },
+  stock: { type: Number, required: true },
+  tags: [{ type: String }],
 });
 
 const Product =

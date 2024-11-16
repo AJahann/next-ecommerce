@@ -1,9 +1,11 @@
+import type { CategoryBase } from '@/models/Category';
+
 import connectToDB from '@/database/db';
 import Category from '@/models/Category';
 import Product from '@/models/Product';
 
 class CategoryRepository {
-  async createCategory(data: any) {
+  async createCategory(data: CategoryBase) {
     await connectToDB();
     const category = new Category(data);
     return category.save();

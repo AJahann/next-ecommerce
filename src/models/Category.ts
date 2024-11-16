@@ -6,12 +6,14 @@ import { model, models, Schema } from 'mongoose';
 
 import Product from './Product';
 
-export interface CategoryDocument extends Document {
+export interface CategoryBase {
   name: string;
   description: string;
   image: { url: string };
-  products: Types.ObjectId[];
+  products?: Types.ObjectId[];
 }
+
+interface CategoryDocument extends CategoryBase, Document {}
 
 const CategorySchema = new Schema<CategoryDocument>({
   name: { type: String, required: true, unique: true },
