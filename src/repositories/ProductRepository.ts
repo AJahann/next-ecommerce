@@ -46,6 +46,10 @@ class ProductRepository {
     }
   }
 
+  async getProductsByIds(ids: string[]) {
+    return Product.find({ _id: { $in: ids } }).lean();
+  }
+
   async updateProduct(id: string, data: any) {
     await connectToDB();
 

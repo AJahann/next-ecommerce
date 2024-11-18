@@ -6,16 +6,20 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import CartModal from './CartModal';
+
 const NavIcons = () => {
   const { loggedIn } = useAuth();
-  const [isOpen, setIsOpen] = useState(false);
-  const [cart, setCart] = useState<any[]>([]); // ذخیره سبد خرید
+  const [isOpenProfile, setIsOpenProfile] = useState(false);
+  const [isOpenCart, setIsOpenCart] = useState(false);
+
+  const [cart, setCart] = useState<any[]>([]);
 
   const router = useRouter();
 
   const handleOpenProfile = () => {
     if (loggedIn) {
-      setIsOpen(!isOpen);
+      setIsOpenProfile(!isOpenProfile);
     } else {
       router.push('/login');
     }
@@ -41,8 +45,6 @@ const NavIcons = () => {
     return () => window.removeEventListener('cart-updated', updateCart);
   }, []);
 
-  console.log(cart);
-
   return (
     <div className="relative flex items-center gap-4 xl:gap-6">
       <Image
@@ -53,7 +55,7 @@ const NavIcons = () => {
         src="/profile.png"
         onClick={handleOpenProfile}
       />
-      {isOpen && (
+      {isOpenProfile && (
         <div className="absolute left-0 top-12 z-20 rounded-md bg-white p-4 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
           <Link href="/profile">Profile</Link>
           <div className="mt-2 cursor-pointer">Logout</div>
@@ -67,12 +69,19 @@ const NavIcons = () => {
         src="/notification.png"
       />
       <div className="relative cursor-pointer">
-        <Image height={22} width={22} alt="" src="/cart.png" />
+        <Image
+          height={22}
+          width={22}
+          alt=""
+          src="/cart.png"
+          onClick={() => setIsOpenCart(!isOpenCart)}
+        />
         {cart.length > 0 && (
           <div className="absolute -right-4 -top-4 flex size-6 items-center justify-center rounded-full bg-lama text-sm text-white">
             {cart.length}
           </div>
         )}
+        {isOpenCart && <CartModal cartData={cart} />}
       </div>
     </div>
   );
