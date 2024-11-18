@@ -1,0 +1,3 @@
+interface ExampleEmptyProps {
+  items: string[];
+}

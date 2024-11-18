@@ -2,15 +2,21 @@
 
 import type { ProductDocument } from '@/models/Product';
 
-import ProductRepository from '@/repositories/ProductRepository';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProductList = async () => {
-  const products: ProductDocument[] = await ProductRepository.getAllProducts();
-
+const ProductList = ({ products }: { products: ProductDocument[] }) => {
+  if (products.length < 1) {
+    return (
+      <div className="mt-12 flex flex-wrap justify-between gap-x-8 gap-y-16">
+        <h1 className="w-full text-2xl text-yellow-400">
+          Oops I can't find any product :(
+        </h1>
+      </div>
+    );
+  }
   return (
-    <div className="mt-12 flex flex-wrap justify-between gap-x-8 gap-y-16">
+    <div className="mt-12 flex flex-wrap justify-start gap-x-8 gap-y-16">
       {products.map((product) => (
         <Link
           className="flex w-full flex-col gap-4 sm:w-[45%] lg:w-[22%]"
