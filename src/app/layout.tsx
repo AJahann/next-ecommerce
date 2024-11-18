@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import UserHydration from '@/components/UserHydration';
 import { AuthProvider } from '@/context/useAuth';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </AuthProvider>
+        <Toaster />
       </body>
     </html>
   );

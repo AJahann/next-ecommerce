@@ -4,11 +4,13 @@ import { useAuth } from '@/context/useAuth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const NavIcons = () => {
-  const { loggedIn, user } = useAuth();
+  const { loggedIn } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [cart, setCart] = useState<any[]>([]); // ذخیره سبد خرید
+
   const router = useRouter();
 
   const handleOpenProfile = () => {
@@ -19,7 +21,28 @@ const NavIcons = () => {
     }
   };
 
-  console.log(loggedIn, user);
+  useEffect(() => {
+    const updateCart = () => {
+      const userCartCookie = document.cookie
+        .split('; ')
+        .find((item) => item.startsWith('cart='));
+      if (userCartCookie) {
+        try {
+          setCart(JSON.parse(decodeURIComponent(userCartCookie.split('=')[1])));
+        } catch (e) {
+          console.error('Failed to parse cart cookie:', e);
+        }
+      }
+    };
+
+    updateCart();
+    window.addEventListener('cart-updated', updateCart);
+
+    return () => window.removeEventListener('cart-updated', updateCart);
+  }, []);
+
+  console.log(cart);
+
   return (
     <div className="relative flex items-center gap-4 xl:gap-6">
       <Image
@@ -45,9 +68,11 @@ const NavIcons = () => {
       />
       <div className="relative cursor-pointer">
         <Image height={22} width={22} alt="" src="/cart.png" />
-        <div className="absolute -right-4 -top-4 flex size-6 items-center justify-center rounded-full bg-lama text-sm text-white">
-          5
-        </div>
+        {cart.length > 0 && (
+          <div className="absolute -right-4 -top-4 flex size-6 items-center justify-center rounded-full bg-lama text-sm text-white">
+            {cart.length}
+          </div>
+        )}
       </div>
     </div>
   );

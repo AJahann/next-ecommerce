@@ -45,7 +45,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
           </div>
         )}
         <div className="h-[2px] bg-gray-100" />
-        <Add productId={product._id} stockNumber={product.stock || 0} />
+        <Add productId={product._id} stockNumber={product.stock} />
         <div className="flex flex-col gap-1">
           {product.additionalInfoSections.map((section: any) => (
             <div className="inline-flex gap-2 text-sm" key={section.title}>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Add = ({
   productId,
@@ -9,10 +10,40 @@ const Add = ({
   productId: any;
   stockNumber: number;
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  const [count, setCount] = useState(1);
 
   const addProductToUserCart = (id: any) => {
-    console.log(id);
+    const userCartCookie = document.cookie
+      .split('; ')
+      .find((item) => item.startsWith('cart='));
+
+    let cart = [];
+
+    if (userCartCookie) {
+      try {
+        cart = JSON.parse(decodeURIComponent(userCartCookie.split('=')[1]));
+      } catch (e) {
+        console.error('Failed to parse cart cookie:', e);
+      }
+    }
+
+    const existingProductIndex = cart.findIndex((item: any) => item.id === id);
+
+    if (existingProductIndex >= 0) {
+      if (+cart[existingProductIndex].count + count >= stockNumber) {
+        toast.error('Oops you already have all of this product!');
+      } else {
+        toast.success('Add to cart successfully');
+        cart[existingProductIndex].count += count;
+      }
+    } else {
+      toast.success('Add to cart successfully');
+      cart.push({ id, count });
+    }
+
+    document.cookie = `cart=${encodeURIComponent(JSON.stringify(cart))};path=/;max-age=${60 * 60 * 24 * 7}`;
+    window.dispatchEvent(new Event('cart-updated'));
+    setCount(1);
   };
 
   return (
@@ -25,24 +56,24 @@ const Add = ({
               className="cursor-pointer text-xl disabled:cursor-not-allowed disabled:opacity-20"
               type="button"
               onClick={() => {
-                if (quantity === 1) {
+                if (count === 1) {
                   return null;
                 } else {
-                  setQuantity((prevCount) => prevCount - 1);
+                  setCount((prevCount) => prevCount - 1);
                 }
               }}
             >
               -
             </button>
-            {quantity}
+            {count}
             <button
               className="cursor-pointer text-xl disabled:cursor-not-allowed disabled:opacity-20"
               type="button"
               onClick={() => {
-                if (quantity === stockNumber) {
+                if (count === stockNumber) {
                   return null;
                 } else {
-                  setQuantity((prevCount) => prevCount + 1);
+                  setCount((prevCount) => prevCount + 1);
                 }
               }}
             >
