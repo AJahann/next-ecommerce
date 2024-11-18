@@ -24,6 +24,17 @@ class ProductRepository {
     }
   }
 
+  async getProductBySlug(slug: string) {
+    await connectToDB();
+
+    try {
+      return await Product.findOne({ slug });
+    } catch (error) {
+      console.error(`Error fetching product with slug ${slug}:`, error);
+      throw error;
+    }
+  }
+
   async getProducts(filters: Record<string, any> = {}) {
     await connectToDB();
 

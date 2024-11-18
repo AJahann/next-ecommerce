@@ -10,6 +10,7 @@ export interface ProductDocument extends Document {
     items: { image: { url: string } }[];
   };
   price: number;
+  desc: string;
   additionalInfoSections: { title: string; description: string }[];
   createdAt: Date;
   createdBy?: Types.ObjectId;
@@ -38,6 +39,7 @@ const ProductSchema: Schema = new Schema({
       },
     ],
   },
+  desc: { type: String, required: true },
   price: { type: Number, required: true },
   additionalInfoSections: [
     {
