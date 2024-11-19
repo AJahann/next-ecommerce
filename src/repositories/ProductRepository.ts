@@ -35,13 +35,39 @@ class ProductRepository {
     }
   }
 
-  async getProducts(filters: Record<string, any> = {}) {
+  async getProducts({
+    filters = {},
+    sort = { createdAt: -1 },
+    page = 1,
+    limit = 10,
+  }: {
+    filters?: Record<string, any>;
+    sort?: Record<string, -1 | 1>;
+    page?: number;
+    limit?: number;
+  }) {
     await connectToDB();
 
     try {
-      return await Product.find(filters);
+      const skip = (page - 1) * limit;
+      const products = await Product.find(filters)
+        .sort(sort)
+        .skip(skip)
+        .limit(limit)
+        .lean();
+      const total = await Product.countDocuments(filters);
+
+      return {
+        products: JSON.stringify(products),
+        total,
+        totalPages: Math.ceil(total / limit),
+        currentPage: page,
+      };
     } catch (error) {
-      console.error('Error fetching products with filters:', error);
+      console.error(
+        'Error fetching products with filters and pagination:',
+        error,
+      );
       throw error;
     }
   }

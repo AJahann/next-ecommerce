@@ -9,12 +9,23 @@ import ProductRepository from '@/repositories/ProductRepository';
 const HomePage = async () => {
   // void seedDB();
 
-  const featuredProducts = await ProductRepository.getProducts({
-    isFeatured: true,
-  });
-  const newProducts = await ProductRepository.getProducts({
-    isNew: true,
-  });
+  const [featuredProductsData, newProductsData] = await Promise.all([
+    ProductRepository.getProducts({
+      filters: { isFeatured: true },
+      sort: { createdAt: -1 },
+      page: 1,
+      limit: 4,
+    }),
+    ProductRepository.getProducts({
+      filters: { isNew: true },
+      sort: { createdAt: -1 },
+      page: 1,
+      limit: 4,
+    }),
+  ]);
+
+  const featuredProducts = JSON.parse(featuredProductsData.products);
+  const newProducts = JSON.parse(newProductsData.products);
   return (
     <div className="">
       <Slider />

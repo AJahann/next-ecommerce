@@ -1,3 +1,0 @@
-interface ExampleEmptyProps {
-  items: string[];
-}
